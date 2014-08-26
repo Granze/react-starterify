@@ -1,0 +1,45 @@
+{
+  "name": "react-starterify",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Granze/react-starterify"
+  },
+  "keywords": [
+    "gulp",
+    "react",
+    "browserify",
+    "seed",
+    "boilerplate",
+    "kickstarter"
+  ],
+  "author": "Maurizio Mangione",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Granze/react-starterify/issues"
+  },
+  "homepage": "https://github.com/Granze/react-starterify",
+  "dependencies": {
+    "react": "^0.11.1",
+    "superagent": "^0.18.2"
+  },
+  "devDependencies": {
+    "browserify": "^5.10.0",
+    "del": "^0.1.2",
+    "gulp": "^3.8.7",
+    "gulp-autoprefixer": "0.0.8",
+    "gulp-changed": "^1.0.0",
+    "gulp-csso": "^0.2.9",
+    "gulp-sass": "^0.7.3",
+    "gulp-webserver": "^0.6.0",
+    "reactify": "^0.14.0",
+    "uglifyify": "^2.5.0",
+    "vinyl-source-stream": "^0.1.1",
+    "watchify": "^1.0.2"
+  }
+}
