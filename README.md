@@ -14,7 +14,6 @@ An opinionated React JS application skeleton.
 
 __Build__
 - [Gulp](http://gulpjs.com/)
-- [Gulp-changed](https://www.npmjs.org/package/gulp-changed/)
 
 __Styles__
 - [Gulp-sass](https://www.npmjs.org/package/gulp-sass)
@@ -29,4 +28,4 @@ __Modules__
 - [Watchify](https://www.npmjs.org/package/watchify)
 
 __Server/livereload__
-- [Gulp-webserver](https://www.npmjs.org/package/gulp-webserver)
+- [Browser Sync](http://www.browsersync.io/)
