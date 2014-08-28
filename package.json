@@ -36,6 +36,7 @@
     "gulp-autoprefixer": "0.0.8",
     "gulp-changed": "^1.0.0",
     "gulp-csso": "^0.2.9",
+    "gulp-notify": "^1.5.0",
     "gulp-sass": "^0.7.3",
     "reactify": "^0.14.0",
     "uglifyify": "^2.5.0",

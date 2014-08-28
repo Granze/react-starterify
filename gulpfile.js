@@ -11,6 +11,7 @@ var gulp = require('gulp'),
     reactify = require('reactify'),
     uglifyify = require('uglifyify'),
     del = require('del'),
+    notify = require('gulp-notify'),
     browserSync = require('browser-sync'),
     reload = browserSync.reload;
 
@@ -32,21 +33,23 @@ gulp.task('watchify', function() {
   function rebundle() {
     return bundler
       .bundle()
+      .on('error', notify.onError())
       .pipe(source('app.js'))
       .pipe(gulp.dest('dist/js'))
       .pipe(reload({stream: true, once: true}));
   }
 
-  bundler.transform(reactify);
-  bundler.transform(uglifyify);
-  bundler.on('update', rebundle);
+  bundler.transform(reactify)
+  .transform(uglifyify)
+  .on('update', rebundle);
   return rebundle();
 });
 
 gulp.task('styles', function() {
   return gulp.src('styles/main.scss')
     .pipe(changed('dist/css'))
-    .pipe(sass({sourceComments: 'map', sourceMap: 'sass'}))
+    .pipe(sass())
+    .on('error', notify.onError())
     .pipe(autoprefixer('last 1 version'))
     .pipe(csso())
     .pipe(gulp.dest('dist/css'))
