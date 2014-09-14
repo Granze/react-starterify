@@ -36,7 +36,7 @@ gulp.task('watchify', function() {
       .on('error', notify.onError())
       .pipe(source('app.js'))
       .pipe(gulp.dest('dist/js'))
-      .pipe(reload({stream: true, once: true}));
+      .pipe(reload({stream: true}));
   }
 
   bundler.transform(reactify)
