@@ -7,4 +7,4 @@ window.React = React;
 
 var MyComponent = require('./components/mycomponent.jsx');
 
-React.renderComponent(<MyComponent />, document.body);
+React.renderComponent(<MyComponent />, document.getElementById('content'));

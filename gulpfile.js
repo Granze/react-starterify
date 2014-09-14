@@ -9,7 +9,6 @@ var gulp = require('gulp'),
     watchify = require('watchify'),
     source = require('vinyl-source-stream'),
     reactify = require('reactify'),
-    uglifyify = require('uglifyify'),
     del = require('del'),
     notify = require('gulp-notify'),
     browserSync = require('browser-sync'),
@@ -36,11 +35,10 @@ gulp.task('watchify', function() {
       .on('error', notify.onError())
       .pipe(source('app.js'))
       .pipe(gulp.dest('dist/js'))
-      .pipe(reload({stream: true, once: true}));
+      .pipe(reload({stream: true}));
   }
 
   bundler.transform(reactify)
-  .transform(uglifyify)
   .on('update', rebundle);
   return rebundle();
 });
@@ -48,7 +46,7 @@ gulp.task('watchify', function() {
 gulp.task('styles', function() {
   return gulp.src('styles/main.scss')
     .pipe(changed('dist/css'))
-    .pipe(sass())
+    .pipe(sass({errLogToConsole: true}))
     .on('error', notify.onError())
     .pipe(autoprefixer('last 1 version'))
     .pipe(csso())
@@ -66,6 +64,6 @@ gulp.task('watch', ['clean'], function() {
   gulp.start('main');
 });
 
-gulp.task('default', ['clean'], function() {
+gulp.task('default', function() {
   console.log('Run "gulp watch"');
 });

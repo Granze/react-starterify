@@ -20,12 +20,14 @@ __Styles__
 - [Gulp-csso](https://www.npmjs.org/package/gulp-csso)
 - [gulp-autoprefixer](https://www.npmjs.org/package/gulp-autoprefixer)
 
-__React/ES6__
+__JSX tranform/ES6 support__
 - [Reactify](https://www.npmjs.org/package/reactify)
 
 __Modules__
 - [Browserify](http://browserify.org/)
-- [Watchify](https://www.npmjs.org/package/watchify)
+
+__Ajax__
+- [Superagent](http://visionmedia.github.io/superagent/)
 
 __Server/livereload__
 - [Browser Sync](http://www.browsersync.io/)
