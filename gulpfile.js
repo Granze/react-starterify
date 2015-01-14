@@ -9,7 +9,7 @@ var gulp = require('gulp'),
     watchify = require('watchify'),
     source = require('vinyl-source-stream'),
     buffer = require('vinyl-buffer'),
-    reactify = require('reactify'),
+    to5ify = require('6to5ify'),
     uglify = require('gulp-uglify'),
     del = require('del'),
     notify = require('gulp-notify'),
@@ -47,14 +47,14 @@ gulp.task('watchify', function() {
       .pipe(reload({stream: true}));
   }
 
-  bundler.transform(reactify)
+  bundler.transform(to5ify)
   .on('update', rebundle);
   return rebundle();
 });
 
 gulp.task('browserify', function() {
   browserify(p.jsx)
-    .transform(reactify)
+    .transform(to5ify)
     .bundle()
     .pipe(source(p.bundle))
     .pipe(buffer())
