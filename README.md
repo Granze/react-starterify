@@ -31,7 +31,7 @@ __Styles__
 - [gulp-autoprefixer](https://www.npmjs.org/package/gulp-autoprefixer)
 
 __JSX tranform/ES6 support__
-- [6to5](https://github.com/6to5/6to5)
+- [Babel (formerly 6to5)](https://github.com/babel/babel)
 
 __Minification__
 - [Gulp-uglify](https://github.com/terinjokes/gulp-uglify/)
