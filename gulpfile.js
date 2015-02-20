@@ -14,6 +14,7 @@ var gulp = require('gulp'),
     del = require('del'),
     notify = require('gulp-notify'),
     browserSync = require('browser-sync'),
+    sourcemaps = require('gulp-sourcemaps'),
     reload = browserSync.reload,
     p = {
       jsx: './scripts/app.jsx',
@@ -32,7 +33,7 @@ gulp.task('browserSync', function() {
     server: {
       baseDir: './'
     }
-  })
+  });
 });
 
 gulp.task('watchify', function() {
@@ -58,7 +59,9 @@ gulp.task('browserify', function() {
     .bundle()
     .pipe(source(p.bundle))
     .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(uglify())
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(p.distJs));
 });
 
