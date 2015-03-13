@@ -5,7 +5,7 @@ var React = require('react'),
 
     Mycomponent = React.createClass({
       render: function() {
-        var version = pack.version,
+        let version = pack.version,
             deps;
 
         deps = Object.keys(pack.devDependencies).map((dep, i) => <li key={i}>{dep}</li>);
