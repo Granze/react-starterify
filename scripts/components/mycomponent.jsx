@@ -1,25 +1,23 @@
-'use strict';
+import React from 'react'
+import pack from '../../package.json'
 
-var React = require('react'),
-    pack = require('../../package.json'),
+Mycomponent = React.createClass({
+  render: function() {
+    let version = pack.version,
+        deps;
 
-    Mycomponent = React.createClass({
-      render: function() {
-        let version = pack.version,
-            deps;
+    deps = Object.keys(pack.devDependencies).map((dep, i) => <li key={i}>{dep}</li>);
 
-        deps = Object.keys(pack.devDependencies).map((dep, i) => <li key={i}>{dep}</li>);
+    return (
+      <div>
+        <h1 className="Mycomponent">Welcome to &#9883; React Starterify {version}</h1>
+        <p>Powered by:</p>
+        <ul>
+          {deps}
+        </ul>
+      </div>
+    )
+  }
+});
 
-        return (
-          <div>
-            <h1 className="Mycomponent">Welcome to &#9883; React Starterify {version}</h1>
-            <p>Powered by:</p>
-            <ul>
-              {deps}
-            </ul>
-          </div>
-        )
-      }
-    });
-
-module.exports = Mycomponent;
+export default Mycomponent;
