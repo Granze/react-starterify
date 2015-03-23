@@ -1,7 +1,7 @@
 import React from 'react'
 import pack from '../../package.json'
 
-export default React.createClass({
+let Mycomponent = React.createClass({
   render: function() {
     let version = pack.version,
         deps;
@@ -19,3 +19,5 @@ export default React.createClass({
     )
   }
 });
+
+export default Mycomponent;
