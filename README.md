@@ -6,7 +6,7 @@ An opinionated React JS application skeleton.
 
 __Clone this repository:__
 
-`git clone git@github.com:Granze/react-starterify.git`
+`git clone https://github.com/Granze/react-starterify.git`
 
 __Install the dependencies:__
 
