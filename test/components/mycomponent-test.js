@@ -30,4 +30,12 @@ describe('My component', () => {
     expect(li).to.equal('react');
   });
 
+  it('should display all the dependencies and dev dependencies', () => {
+    let ul = myComponent.props.children.filter(c => c.type === 'ul');
+    let renderedDeps = ul[0].props.children.length;
+    let npmDeps = Object.keys(packageJSON.dependencies).length + Object.keys(packageJSON.devDependencies).length;
+
+    expect(renderedDeps).to.be.equal(npmDeps);
+  });
+
 });
