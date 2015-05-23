@@ -12,6 +12,10 @@ __Install the dependencies:__
 
 `npm install`
 
+__Test:__
+
+`npm run test`
+
 __Development mode with livereload:__
 
 `gulp watch`
@@ -44,3 +48,7 @@ __Ajax__
 
 __Server/livereload__
 - [Browser Sync](http://www.browsersync.io/)
+
+__Test__
+- [Mocha](http://mochajs.org/)
+- [Chai](http://chaijs.com/)
