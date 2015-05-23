@@ -1,19 +1,21 @@
 import React from 'react'
-import pack from '../../package.json'
+import packageJSON from '../../package.json'
 
 let Mycomponent = React.createClass({
   render: function() {
-    let version = pack.version,
-        deps;
+    let version = packageJSON.version,
+        deps, devDeps;
 
-    deps = Object.keys(pack.devDependencies).map((dep, i) => <li key={i}>{dep}</li>);
+    deps = Object.keys(packageJSON.dependencies).map((dep, i) => <li key={i}>{dep}</li>);
+    devDeps = Object.keys(packageJSON.devDependencies).map((dep, i) => <li key={i+10}>{dep}</li>);
 
     return (
       <div>
-        <h1 className="Mycomponent">Welcome to &#9883; React Starterify {version}</h1>
+        <h1 className="Mycomponent">Welcome to &#9883; React Starterify</h1>
+        <span>version {version}</span>
         <p>Powered by:</p>
         <ul>
-          {deps}
+          {deps.concat(devDeps)}
         </ul>
       </div>
     )
