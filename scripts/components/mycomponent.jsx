@@ -1,5 +1,5 @@
-import React from 'react'
-import packageJSON from '../../package.json'
+import React from 'react';
+import packageJSON from '../../package.json';
 
 let Mycomponent = React.createClass({
   render: function() {
@@ -7,7 +7,7 @@ let Mycomponent = React.createClass({
         deps, devDeps;
 
     deps = Object.keys(packageJSON.dependencies).map((dep, i) => <li key={i}>{dep}</li>);
-    devDeps = Object.keys(packageJSON.devDependencies).map((dep, i) => <li key={i+10}>{dep}</li>);
+    devDeps = Object.keys(packageJSON.devDependencies).map((dep, i) => <li key={i + 10}>{dep}</li>);
 
     return (
       <div>
@@ -18,7 +18,7 @@ let Mycomponent = React.createClass({
           {deps.concat(devDeps)}
         </ul>
       </div>
-    )
+    );
   }
 });
 
