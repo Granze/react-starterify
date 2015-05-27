@@ -9,6 +9,7 @@ var gulp = require('gulp'),
     watchify = require('watchify'),
     source = require('vinyl-source-stream'),
     buffer = require('vinyl-buffer'),
+    eslint = require('gulp-eslint'),
     babelify = require('babelify'),
     uglify = require('gulp-uglify'),
     del = require('del'),
@@ -76,12 +77,19 @@ gulp.task('styles', function() {
     .pipe(reload({stream: true}));
 });
 
+gulp.task('lint', function() {
+  return gulp.src('scripts/**/*.jsx')
+    .pipe(eslint())
+    .pipe(eslint.format());
+});
+
 gulp.task('watchTask', function() {
   gulp.watch(p.scss, ['styles']);
+  gulp.watch('scripts/**/*.jsx', ['lint']);
 });
 
 gulp.task('watch', ['clean'], function() {
-  gulp.start(['browserSync', 'watchTask', 'watchify', 'styles']);
+  gulp.start(['browserSync', 'watchTask', 'watchify', 'styles', 'lint']);
 });
 
 gulp.task('build', ['clean'], function() {

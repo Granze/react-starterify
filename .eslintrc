@@ -13,6 +13,9 @@
     "es6": true
   },
   "rules": {
-    "quotes": [2, "single"]
+    "quotes": [2, "single"],
+    "eqeqeq": [2, "smart"],
+    "space-after-keywords": 2,
+    "no-console": 1
   }
 }
