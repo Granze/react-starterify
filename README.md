@@ -49,6 +49,9 @@ __Ajax__
 __Server/livereload__
 - [Browser Sync](http://www.browsersync.io/)
 
+__Code linting__
+- [Eslint](http://eslint.org/)
+
 __Test__
 - [Mocha](http://mochajs.org/)
 - [Chai](http://chaijs.com/)
