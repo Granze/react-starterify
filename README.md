@@ -1,3 +1,5 @@
+[![bitHound Score](https://www.bithound.io/github/Granze/react-starterify/badges/score.svg)](https://www.bithound.io/github/Granze/react-starterify/master)
+
 # React Starterify
 
 An opinionated React JS application skeleton.
