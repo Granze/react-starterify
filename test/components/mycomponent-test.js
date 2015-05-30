@@ -1,7 +1,7 @@
-import React from 'react/addons'
-import {expect} from 'chai'
-import Mycomponent from '../../scripts/components/mycomponent.jsx'
-import * as packageJSON from '../../package.json'
+import React from 'react/addons';
+import {expect} from 'chai';
+import Mycomponent from '../../scripts/components/mycomponent.jsx';
+import * as packageJSON from '../../package.json';
 
 describe('My component', () => {
   let {TestUtils} = React.addons;
