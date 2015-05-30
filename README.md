@@ -1,4 +1,5 @@
 [![bitHound Score](https://www.bithound.io/github/Granze/react-starterify/badges/score.svg)](https://www.bithound.io/github/Granze/react-starterify/master)
+[![Coverage Status](https://coveralls.io/repos/Granze/react-starterify/badge.svg)](https://coveralls.io/r/Granze/react-starterify)
 
 # React Starterify
 
