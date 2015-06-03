@@ -15,7 +15,7 @@ let Mycomponent = React.createClass({
         <span>version {version}</span>
         <p>Powered by:</p>
         <ul>
-          {deps.concat(devDeps)}
+          {[...deps, ...devDeps]}
         </ul>
       </div>
     );
