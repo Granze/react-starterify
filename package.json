@@ -1,6 +1,6 @@
 {
   "name": "react-starterify",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React JS application skeleton using Browserify and other awesome tools",
   "main": "app.js",
   "repository": {
