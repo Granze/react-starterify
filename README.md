@@ -3,7 +3,16 @@
 
 # React Starterify
 
-An opinionated React JS application skeleton.
+A minimal and solid React JS application skeleton.
+
+## Start small, add only what you need.
+
+This starter kit aims to give you a good starting point for your projects. If you're looking for a minimal ES6 React JS starter, this is probably for you.
+
+## Why there are no Flux or Isomorphic things inside?
+
+If you are a beginner, you probably don't want a complex structure with lots of things to care about.
+If you are an advanced user, why should I choose a Flux implementation for you? 
 
 ## Usage
 
