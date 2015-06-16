@@ -38,4 +38,10 @@ describe('My component', () => {
     expect(renderedDeps).to.be.equal(npmDeps);
   });
 
+  it('should return something', () => {
+    let returnSomething = Mycomponent.prototype.returnSomething('hello!');
+
+    expect(returnSomething).to.be.equal('hello!');
+  });
+
 });
