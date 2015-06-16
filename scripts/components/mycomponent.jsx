@@ -2,10 +2,10 @@ import React from 'react';
 import packageJSON from '../../package.json';
 
 let Mycomponent = React.createClass({
-  returnSomething: function(something) {
+  returnSomething(something) {
     return something;
   },
-  render: function() {
+  render() {
     let version = packageJSON.version,
         deps, devDeps;
 
