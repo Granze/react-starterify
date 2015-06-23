@@ -2,7 +2,8 @@
   "name": "react-starterify",
   "version": "1.0.3",
   "description": "React JS application skeleton using Browserify and other awesome tools",
-  "main": "app.js",
+  "author": "Maurizio Mangione",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/Granze/react-starterify"
@@ -21,18 +22,16 @@
     "test": "mocha --reporter nyan --compilers js:babel/register --recursive",
     "clean": "rimraf dist/*",
     "lint": "eslint src/*.jsx src/**/*.jsx",
-    "build": "npm run clean -s && parallelshell 'npm run styles -s' 'npm run browserify -s'",
     "browserify": "NODE_ENV=production browserify src/app.jsx -t babelify -d -p [minifyify --map app.js.map --output dist/app.js.map] > dist/app.js",
     "styles": "node-sass styles/main.scss | postcss --use autoprefixer | cssnano --sourcemap > dist/main.css",
-    "watch": "npm run clean -s && parallelshell watch 'npm run watch-js -s' watch 'npm run watch-css -s' watch 'npm run watch-lint -s'",
+    "server": "browser-sync start --files 'dist/*' --server",
+    "build": "npm run clean -s && parallelshell 'npm run styles -s' 'npm run browserify -s'",
+    "watch": "npm run clean -s && parallelshell watch 'npm run watch-js -s' watch 'npm run watch-css -s' watch 'npm run watch-lint -s' 'npm run server'",
     "watchify": "watchify -t babelify src/app.jsx -o dist/app.js --debug",
     "watch-js": "watch 'npm run watchify' src/",
     "watch-css": "watch 'npm run styles' styles/",
     "watch-lint": "watch 'npm run lint' src/"
-
   },
-  "author": "Maurizio Mangione",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Granze/react-starterify/issues"
   },
