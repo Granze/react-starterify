@@ -1,6 +1,6 @@
 import React from 'react/addons';
 import {expect} from 'chai';
-import Mycomponent from '../../scripts/components/mycomponent.jsx';
+import Mycomponent from '../../src/components/mycomponent.jsx';
 import * as packageJSON from '../../package.json';
 
 describe('My component', () => {
