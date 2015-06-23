@@ -30,27 +30,24 @@ __Test:__
 
 __Development mode with livereload:__
 
-`gulp watch`
+`npm run watch`
 
 __When you are done, create a production ready version of the JS bundle:__
 
-`gulp build`
+`npm run build`
 
 ## Tools used:
 
-__Build__
-- [Gulp](http://gulpjs.com/)
-
 __Styles__
-- [Gulp-sass](https://www.npmjs.org/package/gulp-sass)
-- [Gulp-csso](https://www.npmjs.org/package/gulp-csso)
-- [gulp-autoprefixer](https://www.npmjs.org/package/gulp-autoprefixer)
+- [Node-sass](https://www.npmjs.org/package/gulp-sass)
+- [Cssnano](https://github.com/ben-eb/cssnano)
+- [Autoprefixer](https://www.npmjs.org/package/autoprefixer)
 
 __JSX tranform/ES6 support__
 - [Babel (formerly 6to5)](https://github.com/babel/babel)
 
-__Minification__
-- [Gulp-uglify](https://github.com/terinjokes/gulp-uglify/)
+__JS Minification__
+- [Minifyify](https://github.com/ben-ng/minifyify)
 
 __Modules__
 - [Browserify](http://browserify.org/)
