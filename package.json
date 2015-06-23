@@ -8,29 +8,28 @@
     "url": "https://github.com/Granze/react-starterify"
   },
   "keywords": [
-    "gulp",
     "react",
     "browserify",
     "seed",
     "boilerplate",
     "kickstarter",
     "ES6",
-    "6to5",
-    "babel",
-    "mocha",
-    "chai"
+    "ES2015"
   ],
   "scripts": {
     "start": "npm run watch",
     "test": "mocha --reporter nyan --compilers js:babel/register --recursive",
-    "clean": "rimraf dist",
-    "lint": "eslint src/**/*.jsx",
-    "build": "",
-    "build-js": "browserify src/app.jsx -t babelify -d -p [minifyify --map dist/js/app.map.json --output dist/js/app.map.json] > dist/js/app.js",
-    "build-css": "node-sass styles/main.scss | postcss --use autoprefixer | cssnano > dist/css/main.css",
-    "watch": "",
-    "watch-js": "watchify -t babelify src/app.jsx -o dist/js/app.js",
-    "watch-css": ""
+    "clean": "rimraf dist/*",
+    "lint": "eslint src/*.jsx src/**/*.jsx",
+    "build": "npm run clean -s && parallelshell 'npm run styles -s' 'npm run browserify -s'",
+    "browserify": "NODE_ENV=production browserify src/app.jsx -t babelify -d -p [minifyify --map app.js.map --output dist/app.js.map] > dist/app.js",
+    "styles": "node-sass styles/main.scss | postcss --use autoprefixer | cssnano --sourcemap > dist/main.css",
+    "watch": "npm run clean -s && parallelshell watch 'npm run watch-js -s' watch 'npm run watch-css -s' watch 'npm run watch-lint -s'",
+    "watchify": "watchify -t babelify src/app.jsx -o dist/app.js --debug",
+    "watch-js": "watch 'npm run watchify' src/",
+    "watch-css": "watch 'npm run styles' styles/",
+    "watch-lint": "watch 'npm run lint' src/"
+
   },
   "author": "Maurizio Mangione",
   "license": "MIT",
@@ -56,9 +55,11 @@
     "minifyify": "^7.0.1",
     "mocha": "^2.2.5",
     "node-sass": "^3.2.0",
+    "parallelshell": "^1.1.1",
     "postcss-cli": "^1.3.1",
     "react-tools": "^0.13.3",
     "rimraf": "^2.4.0",
+    "watch": "^0.16.0",
     "watchify": "^3.2.2"
   }
 }
