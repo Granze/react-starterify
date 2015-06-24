@@ -26,9 +26,8 @@
     "styles": "postcss styles/main.scss -u postcss-mixins -u postcss-simple-extend -u postcss-nested -u postcss-simple-vars -u autoprefixer | cssnano --sourcemap > dist/main.css",
     "server": "browser-sync start --files 'dist/*' --server",
     "build": "npm run clean -s && parallelshell 'npm run styles -s' 'npm run browserify -s'",
-    "watch": "npm run clean -s && parallelshell watch 'npm run watch-js -s' watch 'npm run watch-css -s' watch 'npm run watch-lint -s' 'npm run server'",
+    "watch": "npm run clean -s && parallelshell 'npm run watchify -s' watch 'npm run watch-css -s' watch 'npm run watch-lint -s' 'npm run server'",
     "watchify": "watchify -t babelify src/app.jsx -o dist/app.js --debug",
-    "watch-js": "watch 'npm run watchify' src/",
     "watch-css": "watch 'npm run styles' styles/",
     "watch-lint": "watch 'npm run lint' src/"
   },
