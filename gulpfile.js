@@ -4,7 +4,7 @@ var gulp = require('gulp'),
     changed = require('gulp-changed'),
     sass = require('gulp-sass'),
     csso = require('gulp-csso'),
-    autoprefixer = require('gulp-autoprefixer'),
+    autoprefixer = require('autoprefixer-core'),
     browserify = require('browserify'),
     watchify = require('watchify'),
     source = require('vinyl-source-stream'),
@@ -16,6 +16,7 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     browserSync = require('browser-sync'),
     sourcemaps = require('gulp-sourcemaps'),
+    postcss = require('gulp-postcss'),
     reload = browserSync.reload,
     p = {
       jsx: './scripts/app.jsx',
@@ -71,7 +72,7 @@ gulp.task('styles', function() {
     .pipe(changed(p.distCss))
     .pipe(sass({errLogToConsole: true}))
     .on('error', notify.onError())
-    .pipe(autoprefixer('last 1 version'))
+    .pipe(postcss([autoprefixer('last 1 version')]))
     .pipe(csso())
     .pipe(gulp.dest(p.distCss))
     .pipe(reload({stream: true}));
