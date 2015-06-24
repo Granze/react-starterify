@@ -23,12 +23,12 @@
     "clean": "rimraf dist/*",
     "lint": "eslint src/*.jsx src/**/*.jsx",
     "browserify": "NODE_ENV=production browserify src/app.jsx -t babelify -d -p [minifyify --map app.js.map --output dist/app.js.map] > dist/app.js",
-    "styles": "postcss styles/main.scss -u postcss-mixins -u postcss-simple-extend -u postcss-nested -u postcss-simple-vars -u autoprefixer | cssnano --sourcemap > dist/main.css",
-    "server": "browser-sync start --files 'dist/*' --server",
+    "styles": "postcss src/styles/main.css -u postcss-mixins -u postcss-simple-extend -u postcss-nested -u postcss-simple-vars -u autoprefixer | cssnano --sourcemap > dist/main.css",
+    "server": "browser-sync start --files 'dist/' --server",
     "build": "npm run clean -s && parallelshell 'npm run styles -s' 'npm run browserify -s'",
     "watch": "npm run clean -s && parallelshell 'npm run watchify -s' watch 'npm run watch-css -s' watch 'npm run watch-lint -s' 'npm run server'",
     "watchify": "watchify -t babelify src/app.jsx -o dist/app.js --debug",
-    "watch-css": "watch 'npm run styles' styles/",
+    "watch-css": "watch 'npm run styles' src/styles/",
     "watch-lint": "watch 'npm run lint' src/"
   },
   "bugs": {
@@ -41,8 +41,8 @@
   },
   "devDependencies": {
     "autoprefixer": "^5.2.0",
-    "babel": "^5.6.3",
-    "babel-eslint": "^3.1.17",
+    "babel": "^5.6.5",
+    "babel-eslint": "^3.1.18",
     "babelify": "^6.1.2",
     "browser-sync": "^2.7.12",
     "browserify": "^10.2.4",
@@ -61,6 +61,6 @@
     "react-tools": "^0.13.3",
     "rimraf": "^2.4.0",
     "watch": "^0.16.0",
-    "watchify": "^3.2.2"
+    "watchify": "^3.2.3"
   }
 }
