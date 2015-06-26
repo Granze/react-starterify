@@ -7,12 +7,12 @@ A minimal and solid React JS application skeleton.
 
 ## Start small, add only what you need.
 
-This starter kit aims to give you a good starting point for your projects. If you're looking for a minimal ES6 React JS starter, this is probably for you.
+This starter kit aims to give you a good starting point for your projects. If you're looking for a (really) minimal ES6 React JS starter, this is probably for you.
 
 ## Why there are no Flux or Isomorphic things inside?
 
 If you are a beginner, you probably don't want a complex structure with lots of things to care about.
-If you are an advanced user, why should I choose a Flux implementation for you? 
+If you are an advanced user, why should I choose a Flux implementation for you?
 
 ## Usage
 
@@ -30,7 +30,7 @@ __Test:__
 
 __Development mode with livereload:__
 
-`npm run watch`
+`npm start`
 
 __When you are done, create a production ready version of the JS bundle:__
 
@@ -39,11 +39,9 @@ __When you are done, create a production ready version of the JS bundle:__
 ## Tools used:
 
 __Styles__
-- [Node-sass](https://www.npmjs.org/package/gulp-sass)
-- [Cssnano](https://github.com/ben-eb/cssnano)
-- [Autoprefixer](https://www.npmjs.org/package/autoprefixer)
+- [PostCSS + plugins](https://github.com/postcss/postcss)
 
-__JSX tranform/ES6 support__
+__JSX/ES6 transpilation__
 - [Babel (formerly 6to5)](https://github.com/babel/babel)
 
 __JS Minification__
@@ -52,10 +50,7 @@ __JS Minification__
 __Modules__
 - [Browserify](http://browserify.org/)
 
-__Ajax__
-- [Superagent](http://visionmedia.github.io/superagent/)
-
-__Server/livereload__
+__Dev server/livereload__
 - [Browser Sync](http://www.browsersync.io/)
 
 __Code linting__
