@@ -26,10 +26,10 @@
     "styles": "postcss -u postcss-mixins -u postcss-simple-extend -u postcss-nested -u postcss-simple-vars -u autoprefixer -o dist/main.css src/styles/main.css",
     "server": "browser-sync start --files \"dist/main.css,dist/app.js\" --server ./",
     "build": "npm run clean && parallelshell \"npm run styles\" \"npm run browserify\"",
-    "watch": "parallelshell \"npm run watchify\" \"npm run watch-css -s\" \"npm run lint -s\" \"npm run server\"",
-    "watchify": "watchify -v -t babelify src/app.jsx -o dist/app.js",
-    "watch-css": "watch \"npm run styles\" src/styles/",
-    "watch-lint": "watch \"npm run lint\" src/"
+    "watch": "parallelshell \"npm run watchify\" \"npm run watch-css -s\" \"npm run lint\" \"npm run server\"",
+    "watchify": "watchify -t babelify src/app.jsx -o dist/app.js",
+    "watch-css": "nodemon -q -w src/styles/ --ext 'css' --exec \"npm run styles\" ",
+    "watch-lint": "nodemon -q -w src/ --ext 'jsx' --exec \"npm run lint\""
   },
   "bugs": {
     "url": "https://github.com/Granze/react-starterify/issues"
@@ -51,6 +51,7 @@
     "eslint-plugin-react": "^2.5.2",
     "minifyify": "^7.0.1",
     "mocha": "^2.2.5",
+    "nodemon": "^1.3.7",
     "parallelshell": "^1.1.1",
     "postcss-cli": "^1.3.1",
     "postcss-mixins": "^0.3.0",
@@ -59,7 +60,6 @@
     "postcss-simple-vars": "^0.3.0",
     "react-tools": "^0.13.3",
     "rimraf": "^2.4.0",
-    "watch": "^0.16.0",
     "watchify": "^3.2.3"
   }
 }
