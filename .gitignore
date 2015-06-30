@@ -1,5 +1,5 @@
 node_modules
 .tmp
 .idea
-dist
 .tern-project
+*.log
