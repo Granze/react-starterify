@@ -1,7 +1,7 @@
 import React from 'react';
 import packageJSON from '../../package.json';
 
-let Mycomponent = React.createClass({
+export default React.createClass({
   returnSomething(something) {
     return something;
   },
@@ -24,5 +24,3 @@ let Mycomponent = React.createClass({
     );
   }
 });
-
-export default Mycomponent;
