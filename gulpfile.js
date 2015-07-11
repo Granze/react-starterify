@@ -17,13 +17,15 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync'),
     sourcemaps = require('gulp-sourcemaps'),
     postcss = require('gulp-postcss'),
+    htmlReplace = require('gulp-html-replace'),
     reload = browserSync.reload,
     p = {
       jsx: './scripts/app.jsx',
       scss: 'styles/main.scss',
       bundle: 'app.js',
       distJs: 'dist/js',
-      distCss: 'dist/css'
+      distCss: 'dist/css',
+      distHtml: 'dist'
     };
 
 gulp.task('clean', function(cb) {
@@ -78,6 +80,17 @@ gulp.task('styles', function() {
     .pipe(reload({stream: true}));
 });
 
+gulp.task('html-replace', function () {
+  var replacements = {
+    css: 'css/main.css',
+    js: 'js/app.js'
+  };
+
+  return gulp.src('index.html')
+    .pipe(htmlReplace(replacements))
+    .pipe(gulp.dest(p.distHtml));
+});
+
 gulp.task('lint', function() {
   return gulp.src('scripts/**/*.jsx')
     .pipe(eslint())
@@ -95,7 +108,7 @@ gulp.task('watch', ['clean'], function() {
 
 gulp.task('build', ['clean'], function() {
   process.env.NODE_ENV = 'production';
-  gulp.start(['browserify', 'styles']);
+  gulp.start(['browserify', 'styles', 'html-replace']);
 });
 
 gulp.task('default', function() {

@@ -48,6 +48,7 @@
     "gulp-changed": "^1.2.1",
     "gulp-csso": "^1.0.0",
     "gulp-eslint": "^0.14.0",
+    "gulp-html-replace": "^1.5.1",
     "gulp-notify": "^2.2.0",
     "gulp-postcss": "^5.1.9",
     "gulp-sass": "^2.0.1",
