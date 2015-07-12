@@ -25,10 +25,11 @@
     "styles": "postcss -u postcss-mixins -u postcss-simple-extend -u postcss-nested -u postcss-simple-vars -u autoprefixer -o dist/main.css src/styles/main.css",
     "server": "browser-sync start --files \"dist/main.css,dist/app.js\" --server ./ --reload-delay 1000",
     "build": "npm run clean && parallelshell \"npm run styles\" \"npm run browserify\"",
-    "watch": "parallelshell \"npm run watchify\" \"npm run watch-css -s\" \"npm run watch-lint\" \"npm run server\"",
+    "watch": "npm run styles && npm run browserify && parallelshell \"npm run watchify\" \"npm run watch-css -s\" \"npm run watch-lint\" \"npm run server\"",
     "watchify": "watchify -t babelify src/app.jsx -o dist/app.js",
-    "watch-css": "chokidar 'src/styles/' -c \"npm run styles\" ",
-    "watch-lint": "esw -w --ext .jsx src/"
+    "watch-css": "chokidar \"src/styles/\" -c \"npm run styles\" ",
+    "watch-lint": "esw -w --ext .jsx src/",
+    "copy-replace": "cp src/index.html dist/ && replace \"dist/\" \"\""
   },
   "bugs": {
     "url": "https://github.com/Granze/react-starterify/issues"
@@ -59,6 +60,7 @@
     "postcss-simple-extend": "^0.3.1",
     "postcss-simple-vars": "^0.3.0",
     "react-tools": "^0.13.3",
+    "replace": "^0.3.0",
     "rimraf": "^2.4.0",
     "watchify": "^3.2.3"
   }
