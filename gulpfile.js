@@ -17,13 +17,17 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync'),
     sourcemaps = require('gulp-sourcemaps'),
     postcss = require('gulp-postcss'),
+    htmlReplace = require('gulp-html-replace'),
+    image = require('gulp-image'),
     reload = browserSync.reload,
     p = {
       jsx: './scripts/app.jsx',
-      scss: 'styles/main.scss',
+      scss: 'styles/**/*.scss',
       bundle: 'app.js',
       distJs: 'dist/js',
-      distCss: 'dist/css'
+      distCss: 'dist/css',
+      distHtml: 'dist',
+      distImg: 'dist/img'
     };
 
 gulp.task('clean', function(cb) {
@@ -78,6 +82,23 @@ gulp.task('styles', function() {
     .pipe(reload({stream: true}));
 });
 
+gulp.task('html-replace', function () {
+  var replacements = {
+    css: 'css/main.css',
+    js: 'js/app.js'
+  };
+
+  return gulp.src('index.html')
+    .pipe(htmlReplace(replacements))
+    .pipe(gulp.dest(p.distHtml));
+});
+
+gulp.task('image', function () {
+  return gulp.src('img/**')
+    .pipe(image())
+    .pipe(gulp.dest(p.distImg));
+});
+
 gulp.task('lint', function() {
   return gulp.src('scripts/**/*.jsx')
     .pipe(eslint())
@@ -90,12 +111,12 @@ gulp.task('watchTask', function() {
 });
 
 gulp.task('watch', ['clean'], function() {
-  gulp.start(['browserSync', 'watchTask', 'watchify', 'styles', 'lint']);
+  gulp.start(['browserSync', 'watchTask', 'watchify', 'styles', 'lint', 'image']);
 });
 
 gulp.task('build', ['clean'], function() {
   process.env.NODE_ENV = 'production';
-  gulp.start(['browserify', 'styles']);
+  gulp.start(['browserify', 'styles', 'html-replace', 'image']);
 });
 
 gulp.task('default', function() {
