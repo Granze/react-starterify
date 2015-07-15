@@ -18,6 +18,7 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     postcss = require('gulp-postcss'),
     htmlReplace = require('gulp-html-replace'),
+    image = require('gulp-image'),
     reload = browserSync.reload,
     p = {
       jsx: './scripts/app.jsx',
@@ -25,7 +26,8 @@ var gulp = require('gulp'),
       bundle: 'app.js',
       distJs: 'dist/js',
       distCss: 'dist/css',
-      distHtml: 'dist'
+      distHtml: 'dist',
+      distImg: 'dist/img'
     };
 
 gulp.task('clean', function(cb) {
@@ -91,6 +93,12 @@ gulp.task('html-replace', function () {
     .pipe(gulp.dest(p.distHtml));
 });
 
+gulp.task('image', function () {
+  return gulp.src('img/**')
+    .pipe(image())
+    .pipe(gulp.dest(p.distImg));
+});
+
 gulp.task('lint', function() {
   return gulp.src('scripts/**/*.jsx')
     .pipe(eslint())
@@ -103,12 +111,12 @@ gulp.task('watchTask', function() {
 });
 
 gulp.task('watch', ['clean'], function() {
-  gulp.start(['browserSync', 'watchTask', 'watchify', 'styles', 'lint']);
+  gulp.start(['browserSync', 'watchTask', 'watchify', 'styles', 'lint', 'image']);
 });
 
 gulp.task('build', ['clean'], function() {
   process.env.NODE_ENV = 'production';
-  gulp.start(['browserify', 'styles', 'html-replace']);
+  gulp.start(['browserify', 'styles', 'html-replace', 'image']);
 });
 
 gulp.task('default', function() {
