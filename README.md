@@ -12,7 +12,7 @@ This starter kit aims to give you a good starting point for your projects. If yo
 ## Why there are no Flux or Isomorphic things inside?
 
 If you are a beginner, you probably don't want a complex structure with lots of things to care about.
-If you are an advanced user, why should I choose a Flux implementation for you? 
+If you are an advanced user, why should I choose a Flux implementation for you?
 
 ## Usage
 
@@ -67,3 +67,7 @@ __Code linting__
 __Test__
 - [Mocha](http://mochajs.org/)
 - [Chai](http://chaijs.com/)
+
+## License
+
+[MIT License](http://opensource.org/licenses/MIT)
