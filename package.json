@@ -49,7 +49,6 @@
     "chokidar-cli": "^1.0.1",
     "cssnano": "^2.2.0",
     "eslint": "^1.1.0",
-    "eslint-plugin-react": "^3.2.2",
     "eslint-watch": "^1.2.4",
     "minifyify": "^7.0.5",
     "mocha": "^2.2.5",
