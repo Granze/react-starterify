@@ -23,9 +23,12 @@ var gulp = require('gulp'),
     image = require('gulp-image'),
     reload = browserSync.reload,
     p = {
-      jsx: './src/app.jsx',
       bundle: 'app.js',
-      distHtml: 'dist',
+      srcJsx: 'src/app.jsx',
+      srcCss: 'src/**/*.css',
+      dist: 'dist',
+      distJs: 'dist/js',
+      distcss: 'dist/css',
       distImg: 'dist/img'
     };
 
@@ -42,14 +45,14 @@ gulp.task('browserSync', function() {
 });
 
 gulp.task('watchify', function() {
-  var bundler = watchify(browserify(p.jsx, watchify.args));
+  var bundler = watchify(browserify(p.srcJsx, watchify.args));
 
   function rebundle() {
     return bundler
       .bundle()
       .on('error', notify.onError())
       .pipe(source(p.bundle))
-      .pipe(gulp.dest('dist/js'))
+      .pipe(gulp.dest(p.distJs))
       .pipe(reload({stream: true}));
   }
 
@@ -59,23 +62,23 @@ gulp.task('watchify', function() {
 });
 
 gulp.task('browserify', function() {
-  browserify(p.jsx)
+  browserify(p.srcJsx)
     .transform(babelify)
     .bundle()
     .pipe(source(p.bundle))
     .pipe(buffer())
-    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(sourcemaps.init())
     .pipe(uglify())
-    .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('dist/js'));
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(p.distJs));
 });
 
 gulp.task('styles', function() {
-  return gulp.src('src/**/*.css')
+  return gulp.src(p.srcCss)
     .pipe(sourcemaps.init())
     .pipe(postcss([vars, extend, nested, autoprefixer, cssnano]))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('dist/'))
+    .pipe(gulp.dest(p.dist))
     .pipe(reload({stream: true}));
 });
 
@@ -87,7 +90,7 @@ gulp.task('htmlReplace', function () {
 
   return gulp.src('index.html')
     .pipe(htmlReplace(replacements))
-    .pipe(gulp.dest(p.distHtml));
+    .pipe(gulp.dest(p.dist));
 });
 
 gulp.task('image', function () {
@@ -97,14 +100,14 @@ gulp.task('image', function () {
 });
 
 gulp.task('lint', function() {
-  return gulp.src('src/**/*.jsx')
+  return gulp.src(p.srcJsx)
     .pipe(eslint())
     .pipe(eslint.format());
 });
 
 gulp.task('watchTask', function() {
   gulp.watch(p.scss, ['styles']);
-  gulp.watch('src/**/*.jsx', ['lint']);
+  gulp.watch(p.srcJsx, ['lint']);
 });
 
 gulp.task('watch', ['clean'], function() {
