@@ -21,6 +21,7 @@ var gulp = require('gulp'),
     cssnano = require('cssnano'),
     htmlReplace = require('gulp-html-replace'),
     image = require('gulp-image'),
+    runSequence = require('run-sequence'),
     reload = browserSync.reload,
     p = {
       bundle: 'app.js',
@@ -110,13 +111,13 @@ gulp.task('watchTask', function() {
   gulp.watch(p.srcJsx, ['lint']);
 });
 
-gulp.task('watch', ['clean'], function() {
-  gulp.start(['browserSync', 'watchTask', 'watchify', 'styles', 'lint', 'image']);
+gulp.task('watch', function(cb) {
+  runSequence('clean', ['browserSync', 'watchTask', 'watchify', 'styles', 'lint', 'image'], cb);
 });
 
-gulp.task('build', ['clean'], function() {
+gulp.task('build', function(cb) {
   process.env.NODE_ENV = 'production';
-  gulp.start(['browserify', 'styles', 'htmlReplace', 'image']);
+  runSequence('clean', ['browserify', 'styles', 'htmlReplace', 'image'], cb);
 });
 
 gulp.task('default', function() {
