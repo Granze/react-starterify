@@ -3,22 +3,21 @@
 
 # React Starterify
 
-A minimal and solid React JS application skeleton.
+A minimal React JS application starter kit.
 
-## Start small, add only what you need.
+## Start small, add what you need.
 
-This starter kit aims to give you a good starting point for your projects. If you're looking for a minimal ES6 React JS starter, this is probably for you.
+React Starterify aims to give you a good starting point for your projects.
+If you're looking for a minimal ES6 (ES2015) React JS starter with nice [shallow rendering](https://facebook.github.io/react/docs/test-utils.html#shallow-rendering) tests, this is probably for you.
 
 ## Why there are no Flux or Isomorphic things inside?
 
 If you are a beginner, you probably don't want a complex structure with lots of things to care about.
-If you are an advanced user, why should I choose a Flux implementation for you?
+If you are an advanced user, and you need more features, you can choose one of the thousand existing full-stack starter kit. Or you can build your own. 
 
 ## Usage
 
-__Clone this repository:__
-
-`git clone https://github.com/Granze/react-starterify.git`
+[Download React Starterify](https://github.com/Granze/react-starterify/releases/latest)
 
 __Install the dependencies:__
 
@@ -36,37 +35,18 @@ __When you are done, create a production ready version of the JS bundle:__
 
 `gulp build`
 
-## Tools used:
+## What's new in v2.0:
 
-__Build__
-- [Gulp](http://gulpjs.com/)
-
-__Styles__
-- [Gulp-sass](https://www.npmjs.org/package/gulp-sass)
-- [Gulp-csso](https://www.npmjs.org/package/gulp-csso)
-- [gulp-autoprefixer](https://www.npmjs.org/package/gulp-autoprefixer)
-
-__JSX tranform/ES6 support__
-- [Babel (formerly 6to5)](https://github.com/babel/babel)
-
-__Minification__
-- [Gulp-uglify](https://github.com/terinjokes/gulp-uglify/)
-
-__Modules__
-- [Browserify](http://browserify.org/)
-
-__Ajax__
-- [Superagent](http://visionmedia.github.io/superagent/)
-
-__Server/livereload__
-- [Browser Sync](http://www.browsersync.io/)
-
-__Code linting__
-- [Eslint](http://eslint.org/)
-
-__Test__
-- [Mocha](http://mochajs.org/)
-- [Chai](http://chaijs.com/)
+- React Router integration
+- CSS processing via [PostCSS](https://github.com/postcss/postcss)
+  - cssnano for minification
+  - nested
+  - extend
+  - vars
+  - autoprefixer
+- gulpifle written in ES6 (ES2015)
+- better folder structure
+- no predefined AJAX libraries (use [Fetch](https://github.com/github/fetch) or [Superagent](https://github.com/visionmedia/superagent) if you need one.
 
 ## License
 
