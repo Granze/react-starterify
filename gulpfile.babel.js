@@ -25,10 +25,10 @@ const p = {
   bundle: 'app.js',
   srcJsx: 'src/app.jsx',
   srcCss: 'src/**/*.css',
+  srcImg: 'src/images/**',
   dist: 'dist',
   distJs: 'dist/js',
-  distcss: 'dist/css',
-  distImg: 'dist/img'
+  distImg: 'dist/images'
 };
 
 gulp.task('clean', cb => {
@@ -88,7 +88,7 @@ gulp.task('htmlReplace', () => {
 });
 
 gulp.task('images', () => {
-  gulp.src('img/**')
+  gulp.src(p.srcImg)
   .pipe(image())
   .pipe(gulp.dest(p.distImg));
 });
