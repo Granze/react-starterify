@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 import changed from 'gulp-changed';
-import autoprefixer from 'autoprefixer-core';
+import autoprefixer from 'autoprefixer';
 import browserify from 'browserify';
 import watchify from 'watchify';
 import source from 'vinyl-source-stream';
@@ -8,7 +8,7 @@ import buffer from 'vinyl-buffer';
 import eslint from 'gulp-eslint';
 import babelify from 'babelify';
 import uglify from 'gulp-uglify';
-import del from 'del';
+import rimraf from 'rimraf';
 import notify from 'gulp-notify';
 import browserSync, {reload} from 'browser-sync';
 import sourcemaps from 'gulp-sourcemaps';
@@ -23,7 +23,7 @@ import runSequence from 'run-sequence';
 
 const p = {
   bundle: 'app.js',
-  srcJsx: 'src/app.jsx',
+  srcJsx: 'src/index.jsx',
   srcCss: 'src/**/*.css',
   srcImg: 'src/images/**',
   dist: 'dist',
@@ -32,7 +32,7 @@ const p = {
 };
 
 gulp.task('clean', cb => {
-  del(['dist'], cb);
+  rimraf('dist', cb);
 });
 
 gulp.task('browserSync', () => {
@@ -100,7 +100,7 @@ gulp.task('lint', () => {
 });
 
 gulp.task('watchTask', () => {
-  gulp.watch(p.scss, ['styles']);
+  gulp.watch(p.srcCss, ['styles']);
   gulp.watch(p.srcJsx, ['lint']);
 });
 
