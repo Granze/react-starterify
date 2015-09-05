@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/Granze/react-starterify.svg?branch=master)](https://travis-ci.org/Granze/react-starterify)
 [![bitHound Score](https://www.bithound.io/github/Granze/react-starterify/badges/score.svg)](https://www.bithound.io/github/Granze/react-starterify/master)
+[![Dependency status](https://david-dm.org/granze/react-starterify/status.svg)](https://david-dm.org/granze/react-starterify "Dependency status")
+[![Dev dependency status](https://david-dm.org/granze/react-starterify/dev-status.svg)](https://david-dm.org/granze/react-starterify#info=devDependencies "Dev dependency status")
 
 # React Starterify
 
