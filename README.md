@@ -10,7 +10,7 @@ A minimal React JS application starter kit.
 ## Start small, add what you need.
 
 React Starterify aims to give you a good starting point for your projects.
-If you're looking for a minimal ES6 (ES2015) React JS starter with nice [shallow rendering](https://facebook.github.io/react/docs/test-utils.html#shallow-rendering) tests, this is probably for you.
+If you're looking for a minimal ES6 (ES2015) React JS starter with nice [shallow rendering](https://facebook.github.io/react/docs/test-utils.html#shallow-rendering) test examples, this is probably for you.
 
 ## Why there are no Flux or Isomorphic things inside?
 
