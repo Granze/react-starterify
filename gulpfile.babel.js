@@ -23,7 +23,7 @@ import runSequence from 'run-sequence';
 
 const p = {
   bundle: 'app.js',
-  srcJsx: 'src/index.jsx',
+  srcJsx: 'src/Index.js',
   srcCss: 'src/**/*.css',
   srcImg: 'src/images/**',
   dist: 'dist',
