@@ -1,5 +1,4 @@
 import gulp from 'gulp';
-import changed from 'gulp-changed';
 import autoprefixer from 'autoprefixer';
 import browserify from 'browserify';
 import watchify from 'watchify';
@@ -10,7 +9,7 @@ import babelify from 'babelify';
 import uglify from 'gulp-uglify';
 import rimraf from 'rimraf';
 import notify from 'gulp-notify';
-import browserSync, {reload} from 'browser-sync';
+import browserSync, { reload } from 'browser-sync';
 import sourcemaps from 'gulp-sourcemaps';
 import postcss from 'gulp-postcss';
 import nested from 'postcss-nested';
