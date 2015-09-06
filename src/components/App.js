@@ -4,6 +4,7 @@ import packageJSON from '../../package.json';
 
 export default React.createClass({
   returnSomething(something) {
+    //this is only for testing purposes. Check /test/components/App-test.js
     return something;
   },
   render() {
