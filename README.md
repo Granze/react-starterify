@@ -48,7 +48,7 @@ __When you are done, create a production ready version of the JS bundle:__
   - autoprefixer
 - gulpifle written in ES6 (ES2015)
 - better folder structure
-- no predefined AJAX libraries (use [Fetch](https://github.com/github/fetch) or [Superagent](https://github.com/visionmedia/superagent) if you need one.
+- no predefined AJAX libraries (use [Fetch](https://github.com/github/fetch) or [Superagent](https://github.com/visionmedia/superagent) if you need one).
 
 ## License
 
