@@ -21,7 +21,7 @@ import htmlReplace from 'gulp-html-replace';
 import image from 'gulp-image';
 import runSequence from 'run-sequence';
 
-const p = {
+const paths = {
   bundle: 'app.js',
   srcJsx: 'src/Index.js',
   srcCss: 'src/**/*.css',
@@ -44,14 +44,14 @@ gulp.task('browserSync', () => {
 });
 
 gulp.task('watchify', () => {
-  let bundler = watchify(browserify(p.srcJsx, watchify.args));
+  let bundler = watchify(browserify(paths.srcJsx, watchify.args));
 
   function rebundle() {
     return bundler
       .bundle()
       .on('error', notify.onError())
-      .pipe(source(p.bundle))
-      .pipe(gulp.dest(p.distJs))
+      .pipe(source(paths.bundle))
+      .pipe(gulp.dest(paths.distJs))
       .pipe(reload({stream: true}));
   }
 
@@ -61,47 +61,47 @@ gulp.task('watchify', () => {
 });
 
 gulp.task('browserify', () => {
-  browserify(p.srcJsx)
+  browserify(paths.srcJsx)
   .transform(babelify)
   .bundle()
-  .pipe(source(p.bundle))
+  .pipe(source(paths.bundle))
   .pipe(buffer())
   .pipe(sourcemaps.init())
   .pipe(uglify())
   .pipe(sourcemaps.write('.'))
-  .pipe(gulp.dest(p.distJs));
+  .pipe(gulp.dest(paths.distJs));
 });
 
 gulp.task('styles', () => {
-  gulp.src(p.srcCss)
+  gulp.src(paths.srcCss)
   .pipe(sourcemaps.init())
   .pipe(postcss([vars, extend, nested, autoprefixer, cssnano]))
   .pipe(sourcemaps.write('.'))
-  .pipe(gulp.dest(p.dist))
+  .pipe(gulp.dest(paths.dist))
   .pipe(reload({stream: true}));
 });
 
 gulp.task('htmlReplace', () => {
   gulp.src('index.html')
   .pipe(htmlReplace({css: 'styles/main.css', js: 'js/app.js'}))
-  .pipe(gulp.dest(p.dist));
+  .pipe(gulp.dest(paths.dist));
 });
 
 gulp.task('images', () => {
-  gulp.src(p.srcImg)
+  gulp.src(paths.srcImg)
   .pipe(image())
-  .pipe(gulp.dest(p.distImg));
+  .pipe(gulp.dest(paths.distImg));
 });
 
 gulp.task('lint', () => {
-  gulp.src(p.srcJsx)
+  gulp.src(paths.srcJsx)
   .pipe(eslint())
   .pipe(eslint.format());
 });
 
 gulp.task('watchTask', () => {
-  gulp.watch(p.srcCss, ['styles']);
-  gulp.watch(p.srcJsx, ['lint']);
+  gulp.watch(paths.srcCss, ['styles']);
+  gulp.watch(paths.srcJsx, ['lint']);
 });
 
 gulp.task('watch', cb => {
