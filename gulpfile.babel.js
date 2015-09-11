@@ -111,7 +111,3 @@ gulp.task('build', cb => {
   process.env.NODE_ENV = 'production';
   runSequence('clean', ['browserify', 'styles', 'htmlReplace', 'images'], cb);
 });
-
-gulp.task('default', () => {
-  console.log('Run "gulp watch or gulp build"');
-});
