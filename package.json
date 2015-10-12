@@ -36,6 +36,7 @@
   "devDependencies": {
     "autoprefixer": "^6.0.0",
     "babel": "^5.8.21",
+    "babel-core": "^5.8.25",
     "babel-eslint": "^4.1.0",
     "babelify": "^6.3.0",
     "browser-sync": "^2.9.1",
