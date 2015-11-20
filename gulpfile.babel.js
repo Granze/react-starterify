@@ -17,7 +17,8 @@ import vars from 'postcss-simple-vars';
 import extend from 'postcss-simple-extend';
 import cssnano from 'cssnano';
 import htmlReplace from 'gulp-html-replace';
-import image from 'gulp-image';
+import imagemin from 'gulp-imagemin';
+import pngquant from 'imagemin-pngquant';
 import runSequence from 'run-sequence';
 
 const paths = {
@@ -88,8 +89,12 @@ gulp.task('htmlReplace', () => {
 
 gulp.task('images', () => {
   gulp.src(paths.srcImg)
-  .pipe(image())
-  .pipe(gulp.dest(paths.distImg));
+    .pipe(imagemin({
+      progressive: true,
+      svgoPlugins: [{removeViewBox: false}],
+      use: [pngquant()]
+    }))
+    .pipe(gulp.dest(paths.distImg));
 });
 
 gulp.task('lint', () => {
