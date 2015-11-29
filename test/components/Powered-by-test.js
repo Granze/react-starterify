@@ -15,7 +15,7 @@ describe('Powered by', () => {
 
   it('should render the deps list and "react" should be present', () => {
     let ul = poweredBy.props.children.filter(c => c.type === 'ul');
-    let li = ul[0].props.children[0].props.children;
+    let li = ul[0].props.children[1].props.children;
 
     expect(li).to.equal('react');
   });
