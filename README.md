@@ -31,11 +31,11 @@ __Test:__
 
 __Development mode with livereload:__
 
-`gulp watch`
+`npm run watch`
 
 __When you are done, create a production ready version of the JS bundle:__
 
-`gulp build`
+`npm run build`
 
 ## What's new in v2.0:
 
