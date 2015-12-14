@@ -21,7 +21,7 @@
     "chai"
   ],
   "scripts": {
-    "test": "mocha --reporter nyan --compilers js:babel/register --recursive",
+    "test": "mocha --reporter nyan --compilers js:babel-core/register --recursive",
     "watch": "gulp watch",
     "build": "gulp build"
   },
