@@ -1,10 +1,10 @@
-import React from 'react/addons';
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 import Poweredby from '../../src/components/Powered-by';
 import * as packageJSON from '../../package.json';
 
 describe('Powered by', () => {
-  const {TestUtils} = React.addons;
   const shallowRenderer = TestUtils.createRenderer();
   shallowRenderer.render(<Poweredby />);
   const poweredBy = shallowRenderer.getRenderOutput();

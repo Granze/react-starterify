@@ -1,9 +1,9 @@
-import React from 'react/addons';
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 import About from '../../src/components/About';
 
 describe('About', () => {
-  const {TestUtils} = React.addons;
   const shallowRenderer = TestUtils.createRenderer();
   shallowRenderer.render(<About />);
   const about = shallowRenderer.getRenderOutput();
