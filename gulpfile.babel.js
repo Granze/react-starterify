@@ -26,6 +26,7 @@ const paths = {
   srcJsx: 'src/Index.js',
   srcCss: 'src/**/*.css',
   srcImg: 'src/images/**',
+  srcLint: ['src/**/*.js', 'test/**/*.js'],
   dist: 'dist',
   distJs: 'dist/js',
   distImg: 'dist/images'
@@ -107,7 +108,7 @@ gulp.task('images', () => {
 });
 
 gulp.task('lint', () => {
-  gulp.src(paths.srcJsx)
+  gulp.src(paths.srcLint)
   .pipe(eslint())
   .pipe(eslint.format());
 });
