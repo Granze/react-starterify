@@ -31,6 +31,13 @@ const paths = {
   distImg: 'dist/images'
 };
 
+const customOpts = {
+  entries: [paths.srcJsx],
+  debug: true
+};
+
+const opts = Object.assign({}, watchify.args, customOpts);
+
 gulp.task('clean', cb => {
   rimraf('dist', cb);
 });
@@ -44,13 +51,15 @@ gulp.task('browserSync', () => {
 });
 
 gulp.task('watchify', () => {
-  let bundler = watchify(browserify(paths.srcJsx, watchify.args));
+  let bundler = watchify(browserify(opts));
 
   function rebundle() {
-    return bundler
-      .bundle()
+    return bundler.bundle()
       .on('error', notify.onError())
       .pipe(source(paths.bundle))
+      .pipe(buffer())
+      .pipe(sourcemaps.init({loadMaps: true}))
+      .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(paths.distJs))
       .pipe(reload({stream: true}));
   }
@@ -61,12 +70,12 @@ gulp.task('watchify', () => {
 });
 
 gulp.task('browserify', () => {
-  browserify(paths.srcJsx)
+  browserify(paths.srcJsx, {debug: true})
   .transform(babelify)
   .bundle()
   .pipe(source(paths.bundle))
   .pipe(buffer())
-  .pipe(sourcemaps.init())
+  .pipe(sourcemaps.init({loadMaps: true}))
   .pipe(uglify())
   .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest(paths.distJs));
