@@ -20,6 +20,7 @@ import htmlReplace from 'gulp-html-replace';
 import imagemin from 'gulp-imagemin';
 import pngquant from 'imagemin-pngquant';
 import runSequence from 'run-sequence';
+import ghPages from 'gulp-gh-pages';
 
 const paths = {
   bundle: 'app.js',
@@ -29,7 +30,8 @@ const paths = {
   srcLint: ['src/**/*.js', 'test/**/*.js'],
   dist: 'dist',
   distJs: 'dist/js',
-  distImg: 'dist/images'
+  distImg: 'dist/images',
+  distDeploy: './dist/**/*'
 };
 
 const customOpts = {
@@ -116,6 +118,11 @@ gulp.task('lint', () => {
 gulp.task('watchTask', () => {
   gulp.watch(paths.srcCss, ['styles']);
   gulp.watch(paths.srcJsx, ['lint']);
+});
+
+gulp.task('deploy', function() {
+  return gulp.src(paths.distDeploy)
+    .pipe(ghPages());
 });
 
 gulp.task('watch', cb => {
