@@ -37,6 +37,10 @@ __When you are done, create a production ready version of the JS bundle:__
 
 `npm run build`
 
+__Deploy on Github pages with one command:__
+
+`npm run deploy`
+
 ## What's new in v2.0:
 
 - React Router integration
