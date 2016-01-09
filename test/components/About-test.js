@@ -1,6 +1,6 @@
 import test from 'ava';
 import 'babel-core/register';
-import { assert } from 'chai';
+import { findWhere } from 'lodash';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import About from '../../src/components/About';
@@ -13,7 +13,7 @@ test('should have a div as container', t => {
   t.is(about.type, 'div');
 });
 
-test('should have an h2 tag containing the text "About"', () => {
-  assert.include(about.props.children, <h2>About</h2>);
+test('should have an h2 tag containing the text "About"', t => {
+  t.ok(findWhere(about.props.children, <h2>About</h2>));
 });
 
