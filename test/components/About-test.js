@@ -1,19 +1,19 @@
+import test from 'ava';
+import 'babel-core/register';
+import { assert } from 'chai';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import { expect } from 'chai';
 import About from '../../src/components/About';
 
-describe('About', () => {
-  const shallowRenderer = TestUtils.createRenderer();
-  shallowRenderer.render(<About />);
-  const about = shallowRenderer.getRenderOutput();
+const shallowRenderer = TestUtils.createRenderer();
+shallowRenderer.render(<About />);
+const about = shallowRenderer.getRenderOutput();
 
-  it('should have a div as container', () => {
-    expect(about.type).to.equal('div');
-  });
-
-  it('should have an h2 tag containing the text "About"', () => {
-    expect(about.props.children).to.contain(<h2>About</h2>);
-  });
-
+test('should have a div as container', t => {
+  t.is(about.type, 'div');
 });
+
+test('should have an h2 tag containing the text "About"', () => {
+  assert.include(about.props.children, <h2>About</h2>);
+});
+
