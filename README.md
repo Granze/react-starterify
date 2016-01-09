@@ -27,7 +27,7 @@ __Install the dependencies:__
 
 __Test:__
 
-`npm run test`
+`npm test`
 
 __Development mode with livereload:__
 
