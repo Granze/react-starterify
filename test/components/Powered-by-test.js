@@ -3,7 +3,7 @@ import 'babel-core/register';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import Poweredby from '../../src/components/Powered-by';
-import * as packageJSON from '../../package.json';
+import { dependencies, devDependencies } from '../../package.json';
 
 const shallowRenderer = TestUtils.createRenderer();
 shallowRenderer.render(<Poweredby />);
@@ -23,7 +23,7 @@ test('should render the deps list and "react" should be present', t => {
 test('should display all the dependencies and dev dependencies', t => {
   let ul = poweredBy.props.children.filter(c => c.type === 'ul');
   let renderedDeps = ul[0].props.children.length;
-  let npmDeps = Object.keys(packageJSON.dependencies).length + Object.keys(packageJSON.devDependencies).length;
+  let npmDeps = Object.keys(dependencies).length + Object.keys(devDependencies).length;
 
   t.is(renderedDeps, npmDeps);
 });

@@ -4,7 +4,7 @@ import { findWhere } from 'lodash';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import App from '../../src/components/App';
-import * as packageJSON from '../../package.json';
+import { version } from '../../package.json';
 
 const shallowRenderer = TestUtils.createRenderer();
 shallowRenderer.render(<App />);
@@ -15,7 +15,6 @@ test('should have a div as container', t => {
 });
 
 test('should have a version number that match the package.json version property', t => {
-  let version = packageJSON.version;
   let h1 = app.props.children[0].props.children;
 
   t.ok(findWhere(h1, <h1>React Starterify {version}</h1>));
