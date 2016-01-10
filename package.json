@@ -1,6 +1,6 @@
 {
   "name": "react-starterify",
-  "version": "2.1.4",
+  "version": "2.2.0",
   "description": "React JS application skeleton using Browserify and other awesome tools",
   "main": "app.js",
   "repository": {
@@ -47,7 +47,7 @@
     "babel-preset-react": "^6.3.13",
     "babelify": "^7.2.0",
     "browser-sync": "^2.9.1",
-    "browserify": "^12.0.1",
+    "browserify": "^13.0.0",
     "cssnano": "^3.0.0",
     "eslint-plugin-react": "^3.3.2",
     "gulp": "^3.9.0",
