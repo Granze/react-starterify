@@ -12,6 +12,7 @@ import notify from 'gulp-notify';
 import browserSync, { reload } from 'browser-sync';
 import sourcemaps from 'gulp-sourcemaps';
 import postcss from 'gulp-postcss';
+import rename from 'gulp-rename';
 import nested from 'postcss-nested';
 import vars from 'postcss-simple-vars';
 import extend from 'postcss-simple-extend';
@@ -25,7 +26,7 @@ import ghPages from 'gulp-gh-pages';
 const paths = {
   bundle: 'app.js',
   srcJsx: 'src/Index.js',
-  srcCss: 'src/**/*.css',
+  srcCss: 'src/**/*.scss',
   srcImg: 'src/images/**',
   srcLint: ['src/**/*.js', 'test/**/*.js'],
   dist: 'dist',
@@ -86,6 +87,7 @@ gulp.task('browserify', () => {
 
 gulp.task('styles', () => {
   gulp.src(paths.srcCss)
+  .pipe(rename({extname: ".css"}))
   .pipe(sourcemaps.init())
   .pipe(postcss([vars, extend, nested, autoprefixer, cssnano]))
   .pipe(sourcemaps.write('.'))
