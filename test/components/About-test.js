@@ -1,6 +1,6 @@
 import test from 'ava';
 import 'babel-core/register';
-import { findWhere } from 'lodash';
+import { find } from 'lodash';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import About from '../../src/components/About';
@@ -14,6 +14,6 @@ test('should have a div as container', t => {
 });
 
 test('should have an h2 tag containing the text "About"', t => {
-  t.ok(findWhere(about.props.children, <h2>About</h2>));
+  t.ok(find(about.props.children, <h2>About</h2>));
 });
 
