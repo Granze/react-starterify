@@ -1,0 +1,63 @@
+#!/bin/bash
+#MAINTAINER Kaio Magalhães.
+
+####### Project configuration example #######
+PROJECT_NAME=react-starterify
+PROJECT_MAIN_LANGUAGE=javascript
+#############################################
+
+UPPERCASE_PROJECT_NAME=$(echo $PROJECT_NAME | tr '[a-z]' '[A-Z]')
+ATTACH_ON_CONTAINER=$PROJECT_MAIN_LANGUAGE
+PROJECT_CONTAINER_NAME=$PROJECT_NAME-$PROJECT_MAIN_LANGUAGE
+
+attach_to_project_container(){
+  echo 'attaching to project container'
+  echo 'Press <Enter> or <return>'
+  docker attach $PROJECT_CONTAINER_NAME
+}
+
+start_container(){
+  for action in "stop" "start"
+  do
+    docker $action $1
+  done
+}
+
+container_exists() {
+  container=$(docker ps -a | grep $1)
+  if [ -z "$container" ]; then
+    echo false
+  else
+    echo true
+  fi
+}
+
+run_project_container(){
+  docker_id=$PROJECT_CONTAINER_NAME
+
+  if $(container_exists $PROJECT_CONTAINER_NAME); then
+    echo 'Starting project container on docker'
+    start_container $PROJECT_CONTAINER_NAME
+    attach_to_project_container
+  else
+    echo 'Creating project container'
+
+    cp Dockerfile.development Dockerfile
+    docker build -t $PROJECT_NAME .
+    rm Dockerfile
+    docker run -d -ti --name $PROJECT_CONTAINER_NAME \
+      -v $(pwd):/share \
+      -p 8079:8079 -p 8080:8080 -p 3000:3000 -p 3001:3001  \
+      $PROJECT_NAME /bin/bash -l
+
+    docker_id=$PROJECT_CONTAINER_NAME
+    docker start $docker_id
+    attach_to_project_container
+  fi
+}
+
+init(){
+  run_project_container
+}
+
+init
