@@ -21,6 +21,10 @@ If you are an advanced user, and you need more features, you can choose one of t
 
 [Download React Starterify](https://github.com/Granze/react-starterify/releases/latest)
 
+__With docker:__
+
+`sh bin/dev`
+
 __Install the dependencies:__
 
 `npm install`
