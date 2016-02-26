@@ -1,6 +1,6 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { Router, Route } from 'react-router';
+import {render} from 'react-dom';
+import {Router, Route, hashHistory} from 'react-router';
 import App from './components/App';
 import PoweredBy from './components/Powered-by';
 import About from './components/About';
@@ -8,7 +8,7 @@ import About from './components/About';
 window.React = React;
 
 render(
-  (<Router>
+  (<Router history={hashHistory}>
     <Route path="/" component={App}>
       <Route path="/about" component={About}/>
       <Route path="/poweredby" component={PoweredBy}/>
