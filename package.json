@@ -19,6 +19,12 @@
     "babel",
     "ava"
   ],
+  "ava": {
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  },
   "scripts": {
     "watch": "gulp watch",
     "build": "gulp build",
@@ -39,12 +45,13 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.0.0",
-    "ava": "^0.9.1",
+    "ava": "^0.13.0",
     "babel": "^6.3.13",
     "babel-core": "^6.3.17",
     "babel-eslint": "^5.0.0",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
+    "babel-register": "^6.6.5",
     "babelify": "^7.2.0",
     "browser-sync": "^2.9.1",
     "browserify": "^13.0.0",
