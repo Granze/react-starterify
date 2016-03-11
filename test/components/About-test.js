@@ -1,5 +1,4 @@
 import test from 'ava';
-import 'babel-core/register';
 import { find } from 'lodash';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
