@@ -14,13 +14,7 @@ test('should have a div as container', t => {
 });
 
 test('should have a version number that match the package.json version property', t => {
-  let h1 = app.props.children[0].props.children;
+  const h1 = app.props.children[0].props.children;
 
   t.ok(find(h1, <h1>React Starterify {version}</h1>));
-});
-
-test('should return something', t => {
-  let returnSomething = App.prototype.returnSomething('hello!');
-
-  t.is(returnSomething, 'hello!');
 });
