@@ -25,7 +25,7 @@ import ghPages from 'gulp-gh-pages';
 
 const paths = {
   bundle: 'app.js',
-  srcJsx: 'src/Index.js',
+  entry: 'src/Index.js',
   srcCss: 'src/**/*.scss',
   srcImg: 'src/images/**',
   srcLint: ['src/**/*.js', 'test/**/*.js'],
@@ -36,7 +36,7 @@ const paths = {
 };
 
 const customOpts = {
-  entries: [paths.srcJsx],
+  entries: [paths.entry],
   debug: true
 };
 
@@ -55,17 +55,17 @@ gulp.task('browserSync', () => {
 });
 
 gulp.task('watchify', () => {
-  let bundler = watchify(browserify(opts));
+  const bundler = watchify(browserify(opts));
 
   function rebundle() {
     return bundler.bundle()
       .on('error', notify.onError())
       .pipe(source(paths.bundle))
       .pipe(buffer())
-      .pipe(sourcemaps.init({loadMaps: true}))
+      .pipe(sourcemaps.init({ loadMaps: true }))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(paths.distJs))
-      .pipe(reload({stream: true}));
+      .pipe(reload({ stream: true }));
   }
 
   bundler.transform(babelify)
@@ -74,12 +74,12 @@ gulp.task('watchify', () => {
 });
 
 gulp.task('browserify', () => {
-  browserify(paths.srcJsx, {debug: true})
+  browserify(paths.entry, { debug: true })
   .transform(babelify)
   .bundle()
   .pipe(source(paths.bundle))
   .pipe(buffer())
-  .pipe(sourcemaps.init({loadMaps: true}))
+  .pipe(sourcemaps.init({ loadMaps: true }))
   .pipe(uglify())
   .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest(paths.distJs));
@@ -87,17 +87,17 @@ gulp.task('browserify', () => {
 
 gulp.task('styles', () => {
   gulp.src(paths.srcCss)
-  .pipe(rename({extname: ".css"}))
+  .pipe(rename({ extname: '.css' }))
   .pipe(sourcemaps.init())
   .pipe(postcss([vars, extend, nested, autoprefixer, cssnano]))
   .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest(paths.dist))
-  .pipe(reload({stream: true}));
+  .pipe(reload({ stream: true }));
 });
 
 gulp.task('htmlReplace', () => {
   gulp.src('index.html')
-  .pipe(htmlReplace({css: 'styles/main.css', js: 'js/app.js'}))
+  .pipe(htmlReplace({ css: 'styles/main.css', js: 'js/app.js' }))
   .pipe(gulp.dest(paths.dist));
 });
 
@@ -105,7 +105,7 @@ gulp.task('images', () => {
   gulp.src(paths.srcImg)
     .pipe(imagemin({
       progressive: true,
-      svgoPlugins: [{removeViewBox: false}],
+      svgoPlugins: [{ removeViewBox: false }],
       use: [pngquant()]
     }))
     .pipe(gulp.dest(paths.distImg));
@@ -119,11 +119,11 @@ gulp.task('lint', () => {
 
 gulp.task('watchTask', () => {
   gulp.watch(paths.srcCss, ['styles']);
-  gulp.watch(paths.srcJsx, ['lint']);
+  gulp.watch(paths.srcLint, ['lint']);
 });
 
-gulp.task('deploy', function() {
-  return gulp.src(paths.distDeploy)
+gulp.task('deploy', () => {
+  gulp.src(paths.distDeploy)
     .pipe(ghPages());
 });
 
