@@ -1,5 +1,4 @@
 import test from 'ava';
-import { find } from 'lodash';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import About from '../../src/components/About';
@@ -12,7 +11,10 @@ test('should have a div as container', t => {
   t.is(about.type, 'div');
 });
 
-test('should have an h2 tag containing the text "About"', t => {
-  t.ok(find(about.props.children, <h2>About</h2>));
+test('should contains an H2', t => {
+  t.is(about.props.children[0].type, 'h2');
 });
 
+test('should have an h2 tag containing the text "About"', t => {
+  t.is(about.props.children[0].props.children, 'About');
+});
