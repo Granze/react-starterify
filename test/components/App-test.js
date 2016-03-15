@@ -17,7 +17,7 @@ test('should contains an H1', t => {
   t.is(app.props.children[0].props.children[0].type, 'h1');
 });
 
-test('should have a version number that match the package.json version property', t => {
+test('should display the title and the version number', t => {
   const h1 = <h1>React Starterify {version}</h1>;
   const target = app.props.children[0].props.children[0];
   t.ok(isEqual(target.props.children, h1.props.children));
