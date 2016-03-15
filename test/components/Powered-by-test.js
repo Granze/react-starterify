@@ -13,16 +13,16 @@ test('should have a div as container', t => {
 });
 
 test('should render the deps list and "react" should be present', t => {
-  let ul = poweredBy.props.children.filter(c => c.type === 'ul');
-  let li = ul[0].props.children[1].props.children;
+  const ul = poweredBy.props.children.filter(c => c.type === 'ul');
+  const li = ul[0].props.children[1].props.children;
 
   t.is(li, 'react');
 });
 
 test('should display all the dependencies and dev dependencies', t => {
-  let ul = poweredBy.props.children.filter(c => c.type === 'ul');
-  let renderedDeps = ul[0].props.children.length;
-  let npmDeps = Object.keys(dependencies).length + Object.keys(devDependencies).length;
+  const ul = poweredBy.props.children.filter(c => c.type === 'ul');
+  const renderedDeps = ul[0].props.children.length;
+  const npmDeps = Object.keys(dependencies).length + Object.keys(devDependencies).length;
 
   t.is(renderedDeps, npmDeps);
 });
