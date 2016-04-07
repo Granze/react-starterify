@@ -20,5 +20,5 @@ test('should contains an H1', t => {
 test('should display the title and the version number', t => {
   const h1 = <h1>React Starterify {version}</h1>;
   const target = app.props.children[0].props.children[0];
-  t.ok(isEqual(target.props.children, h1.props.children));
+  t.truthy(isEqual(target.props.children, h1.props.children));
 });
