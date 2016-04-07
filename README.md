@@ -31,7 +31,7 @@ __Test:__
 
 __Development mode with livereload:__
 
-`npm run watch`
+`npm run watch` or just `npm start`
 
 __When you are done, create a production ready version of the JS bundle:__
 
