@@ -37,7 +37,9 @@ const paths = {
 
 const customOpts = {
   entries: [paths.entry],
-  debug: true
+  debug: true,
+  cache: {},
+  packageCache: {}
 };
 
 const opts = Object.assign({}, watchify.args, customOpts);
