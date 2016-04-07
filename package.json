@@ -1,6 +1,6 @@
 {
   "name": "react-starterify",
-  "version": "2.3.1",
+  "version": "2.4.1",
   "description": "React JS application skeleton using Browserify and other awesome tools",
   "main": "app.js",
   "repository": {
@@ -40,8 +40,8 @@
   "homepage": "https://github.com/Granze/react-starterify",
   "dependencies": {
     "history": "^2.0.0",
-    "react": "^0.14.0",
-    "react-dom": "^0.14.0",
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0",
     "react-router": "^2.0.0"
   },
   "devDependencies": {
