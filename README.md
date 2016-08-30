@@ -50,7 +50,7 @@ __Deploy on Github pages with one command:__
   - extend
   - vars
   - autoprefixer
-- gulpifle written in ES6 (ES2015)
+- gulpfile written in ES6 (ES2015)
 - better folder structure
 - no predefined AJAX libraries (use [Fetch](https://github.com/github/fetch) or [Superagent](https://github.com/visionmedia/superagent) if you need one).
 
